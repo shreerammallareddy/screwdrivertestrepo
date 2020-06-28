@@ -3,17 +3,11 @@ shared:
 
 jobs:
   omni:
-    annotations:
-      screwdriver.cd/ram: TURBO
-      screwdriver.cd/cpu: TURBO
-    requires:
-      - ~pr
-      - ~commit
     steps:
       - setup-ci: git clone https://github.com/shreerammallareddy/screwdrivertestrepo.git ci
       - install: mvn clean install
       - test: mvn test
-      - log: HI this omni step log
+      - log: Hi this omni step log
   main:
     requires: [omni]
     steps:
