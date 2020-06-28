@@ -1,0 +1,14 @@
+shared:
+  image: jdk:8
+
+jobs:
+  omni:
+    steps:
+      - setup-ci: git clone https://github.com/shreerammallareddy/screwdrivertestrepo.git ci
+      - install: mvn clean install
+      - test: mvn test
+      - log: Hi this omni step log
+  main:
+    requires: [omni]
+    steps:
+      - log: Hi this is main log
